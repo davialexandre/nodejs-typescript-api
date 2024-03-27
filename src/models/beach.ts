@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 
 export enum BeachPosition {
   S = 'S',
@@ -13,6 +13,7 @@ export interface Beach {
   position: BeachPosition;
   lat: number;
   lng: number;
+  user: Types.ObjectId;
 }
 
 const schema = new Schema<Beach>(
@@ -21,6 +22,7 @@ const schema = new Schema<Beach>(
     lng: { type: Number, required: true },
     name: { type: String, required: true },
     position: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   },
   {
     toJSON: {

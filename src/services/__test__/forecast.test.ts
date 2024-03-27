@@ -5,6 +5,7 @@ import {
   ForecastProcessingInternalError,
 } from '@src/services/forecast';
 import { Beach, BeachPosition } from '@src/models/beach';
+import { Types } from 'mongoose';
 
 jest.mock('@src/clients/stormGlass');
 
@@ -21,6 +22,7 @@ describe('Forecast Service', () => {
         lng: 151.289824,
         name: 'Manly',
         position: BeachPosition.E,
+        user: new Types.ObjectId(),
       },
     ];
 
@@ -105,6 +107,7 @@ describe('Forecast Service', () => {
         lng: 151.289824,
         name: 'Manly',
         position: BeachPosition.E,
+        user: new Types.ObjectId(),
       },
     ];
     mockedStormGlassService.fetchPoints.mockRejectedValue(
